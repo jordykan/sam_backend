@@ -309,7 +309,8 @@ export default {
           aprobacionAmls: req.body.aprobacionAmls,
           fechaAprobacion: fecha,
         }
-      );
+      )
+      .populate("usuario");
       res.status(200).json(reg);
     } catch (e) {
       res.status(500).send({
@@ -327,7 +328,8 @@ export default {
           aprobacionAmls: req.body.aprobacionAmls,
           motivo_cancelacion: req.body.motivo_cancelacion,
         }
-      );
+      )
+      .populate("usuario");
       res.status(200).json(reg);
     } catch (e) {
       res.status(500).send({
@@ -344,7 +346,8 @@ export default {
           aprobacionApi: req.body.aprobacionApi,
           motivo_cancelacion: req.body.motivo_cancelacion
         }
-      );
+      )
+      .populate("usuario");
       res.status(200).json(reg);
     } catch (e) {
       res.status(500).send({
@@ -358,7 +361,8 @@ export default {
       const reg = await models.CambioGuardia.findByIdAndUpdate(
         { _id: req.body._id },
         { estado: 3, aprobacionApi: req.body.aprobacionApi }
-      );
+      )
+      .populate("usuario");
       res.status(200).json(reg);
     } catch (e) {
       res.status(500).send({
