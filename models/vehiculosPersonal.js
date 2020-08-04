@@ -7,7 +7,7 @@ const vehiculosPersonalSchema = new Schema({
 
     fecha: {type:Array, required:true},
     tipo: {type:String,required:true},
-    compania: {type:Schema.ObjectId,ref:'compania',required:true},
+    compania: {type:String,required:true},
     ingreso_mat:{type:Boolean},
     retiro_mat:{type:Boolean},
     embarcacion: {type:Schema.ObjectId,ref:'embarcacion',required:true},

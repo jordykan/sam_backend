@@ -51,7 +51,6 @@ export default {
       const reg = await models.VehiculoPersonal.find()
         .populate("usuario")
         .populate("embarcacion")
-        .populate("compania")
         .sort({ createdAt: -1 });
       res.status(200).json(reg);
     } catch (e) {

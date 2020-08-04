@@ -7,7 +7,7 @@ const cambioGuardiaSchema = new Schema({
     fecha: {type:Array, required:true},
     tipo:{type:String, required:true},
     operacion:{type:String,required:true},
-    compania: {type:Schema.ObjectId,ref:'compania',required:true},
+    compania: {type:String,required:true},
     muelle: {type:String, required:true},
     aprobacionApi:{type:String,default:''},
     aprobacionAmls:{type:String,default:''},
@@ -15,8 +15,7 @@ const cambioGuardiaSchema = new Schema({
     detalles: {type:String, required:true},
     estado: {type:Number, default:0},
     motivo_cancelacion: {type:String},
-    ingreso_mat:{type:Boolean},
-    retiro_mat:{type:Boolean},
+    
     adjunto: {type:String},
     fechaAprobacion:{type:Date},
     createdAt: {type:Date, default: Date.now()},

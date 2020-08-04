@@ -145,7 +145,6 @@ export default {
       const reg = await models.CambioGuardia.find({ usuario: valor })
         .populate("usuario")
         .populate("embarcacion")
-        .populate("compania")
         .sort({ createdAt: -1 });
       res.status(200).json(reg);
     } catch (e) {
@@ -177,7 +176,6 @@ export default {
       const reg = await models.CambioGuardia.find()
         .populate("usuario")
         .populate("embarcacion")
-        .populate("compania")
         .sort({ createdAt: -1 });
       res.status(200).json(reg);
     } catch (e) {
@@ -222,8 +220,7 @@ export default {
           estado: 0,
           compania: req.body.compania,
           tipo: req.body.tipo,
-          ingreso_mat: req.body.ingreso_mat,
-          retiro_mat: req.body.retiro_mat,
+         
           operacion: req.body.operacion,
         }
       );
