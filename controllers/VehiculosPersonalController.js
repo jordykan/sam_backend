@@ -48,7 +48,8 @@ export default {
   },
   list: async (req, res, next) => {
     try {
-      const reg = await models.VehiculoPersonal.find()
+      let valor = req.query.valor;
+      const reg = await models.VehiculoPersonal.find({ usuario: valor })
         .populate("usuario")
         .populate("embarcacion")
         .sort({ createdAt: -1 });
@@ -219,7 +220,6 @@ export default {
 
   listAdmin: async (req, res, next) => {
     try {
-      let valor = req.query.valor;
       const reg = await models.VehiculoPersonal.find()
         .populate("usuario")
         .populate("embarcacion")

@@ -17,6 +17,7 @@ router.post('/add',auth.verifyAdministrador,auth.verifyCliente,vehiculosPersonal
 router.post('/addVehiculos',md_upload,auth.verifyAdministrador,auth.verifyCliente,vehiculosPersonal.addVehiculos);
 router.get('/query',auth.verifyAdministrador,auth.verifyCliente,vehiculosPersonal.query);
 router.get('/list',auth.verifyCliente, auth.verifyAdministrador,vehiculosPersonal.list);
+router.get('/listAdmin',auth.verifyCliente, auth.verifyAdministrador,vehiculosPersonal.listAdmin);
 router.put('/aprobarApi',auth.verifyCliente,auth.verifyAdministrador,auth.verifyApitab,vehiculosPersonal.aprobarApi);
 router.put('/activate',auth.verifyCliente,vehiculosPersonal.activate);
 router.put('/actualizar',auth.verifyCliente,vehiculosPersonal.actualizar);
