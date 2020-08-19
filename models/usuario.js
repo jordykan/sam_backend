@@ -1,7 +1,7 @@
 import mongoose, {Schema} from 'mongoose';
 const usuarioSchema = new Schema({
     rol:{type:String,maxlength:30,required:true},
-    empresa:{type:String,maxlength:30,required:true},
+    empresa:{type:String,maxlength:60,required:true},
     agencia:{type: Schema.ObjectId, ref: 'agencia'},
     cargo:{type:String, required:true},
     nombre:{type:String,maxlength:50,required:true},
