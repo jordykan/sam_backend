@@ -24,7 +24,8 @@ export default {
         ],
       })
         .populate("embarcacion")
-        .populate("usuario");
+        .populate("usuario")
+        .populate("usuario","agencia")
       res.status(200).json(reg);
     } catch (e) {
       res.status(500).send({
@@ -157,7 +158,7 @@ export default {
 
   listBitacora: async (req, res, next) => {
     try {
-      const reg = await models.CambioGuardia.find({ estado: 1 })
+      const reg = await models.CambioGuardia.find({$or:[{estado: 3},{estado:4}]})
         .populate("usuario")
         .populate("embarcacion")
         .sort({ createdAt: -1 });
@@ -237,7 +238,7 @@ export default {
     try {
       const reg = await models.CambioGuardia.findByIdAndUpdate(
         { _id: req.body._id },
-        { pasajeros: req.body.pasajeros }
+        { pasajeros: req.body.pasajeros,estado:4 }
       );
       res.status(200).json(reg);
     } catch (e) {

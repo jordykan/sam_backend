@@ -4,7 +4,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 const solicitudUnicaSchema = new Schema({
     folio_solicitud:{type:Number,unique:true},
     embarcacion:{type: Schema.ObjectId, ref:'embarcacion'},
-    usuario:{type:Schema.ObjectId, ref:'usuario'},
+    usuario:[{type:Schema.ObjectId, ref:'usuario'}],
     aprobacionApi:{type:String,default:''},
     procedencia:{type:String, required:true},
     aprobacionAmls:{type:String, default:''},

@@ -1,7 +1,7 @@
 import models from '../models';
 
 export default {
-  
+    //Cambios de guardia
     listarCGPorUsuario: async(req,res,next)=>{
         try{
             
@@ -49,6 +49,8 @@ export default {
             });
             next(e);
         }
-    }
+    },
+
+    
 
 }

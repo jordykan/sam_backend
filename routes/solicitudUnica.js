@@ -7,6 +7,8 @@ const router= routerx();
 router.post('/add',auth.verifyCliente,solicitudUnicaController.add);
 router.get('/query',auth.verifyCliente,solicitudUnicaController.query);
 router.get('/list',auth.verifyCliente,solicitudUnicaController.list);
+router.get('/listarSUPorUsuario',auth.verifyCliente,auth.verifyAdministrador,auth.verifyApitab,solicitudUnicaController.listarSUPorUsuario);
+router.get('/listarSUPorAgencia',auth.verifyCliente,auth.verifyAdministrador,auth.verifyApitab,solicitudUnicaController.listarSUPorAgencia);
 router.get('/listAdmin',auth.verifyCliente,auth.verifyAdministrador,auth.verifyApitab,solicitudUnicaController.listAdmin);
 router.put('/aprobarApi',auth.verifyCliente,auth.verifyAdministrador,auth.verifyApitab,solicitudUnicaController.aprobarApi);
 router.put('/update',auth.verifyCliente,solicitudUnicaController.update);

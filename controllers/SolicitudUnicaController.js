@@ -13,6 +13,7 @@ export default {
       next(e);
     }
   },
+
   query: async (req, res, next) => {
     try {
       const reg = await models.SolicitudUnica.findOne({ _id: req.query._id })
@@ -54,8 +55,12 @@ export default {
       let valor = req.query.valor;
       const reg = await models.SolicitudUnica.find()
         .sort({ createdAt: -1 })
+        .populate({
+          path: "usuario",
+          model: "usuario",
+          populate: {path:"agencia",model:"agencia"}
+        })
         .populate("embarcacion")
-        .populate("usuario");
       res.status(200).json(reg);
     } catch (e) {
       res.status(500).send({
@@ -189,4 +194,63 @@ export default {
       next(e);
     }
   },
+  listarSUPorUsuario: async (req, res, next) => {
+    try {
+      let fecha1 = req.query.fecha1;
+      let fecha2 = req.query.fecha2;
+      let usuario = req.query.usuario;
+      const reg = await models.SolicitudUnica.find({
+        $and: [
+          { usuario: usuario },
+          { createdAt: { $gte: fecha1, $lte: fecha2 } },
+        ],
+      })
+      .populate({
+        path: "usuario",
+        model: "usuario",
+        populate: {path:"agencia",model:"agencia"}
+        
+      })
+        .populate("embarcacion")
+       
+        res.status(200).json(reg);
+    } catch (e) {
+      res.status(500).send({
+        message: "Ocurrio un error",
+      });
+      next(e);
+    }
+  },
+  listarSUPorAgencia: async (req, res, next) => {
+    try {
+      let fecha1 = req.query.fecha1;
+      let fecha2 = req.query.fecha2;
+      let usuario = req.query.usuario;
+      const reg = await models.SolicitudUnica.find({
+        $and: [
+          { 'embarcacion.nombre' : usuario },
+          { createdAt: { $gte: fecha1, $lte: fecha2 } },
+        ],
+      })
+      
+      .populate({
+        path: "usuario",
+        model: "usuario",
+        populate: {path:"agencia",model:"agencia"}
+        
+      })
+      .populate("embarcacion");
+      
+        res.status(200).json(reg);
+    } catch (e) {
+      res.status(500).send({
+        message: "Ocurrio un error",
+      });
+      next(e);
+    }
+  }
 };
+
+
+//REPORTES
+
