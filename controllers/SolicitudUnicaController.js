@@ -221,6 +221,117 @@ export default {
       next(e);
     }
   },
+
+  listarSUPorMuelle: async (req, res, next) => {
+    try {
+      let fecha1 = req.query.fecha1;
+      let fecha2 = req.query.fecha2;
+      let muelle = req.query.muelle;
+      const reg = await models.SolicitudUnica.find({
+        $and: [
+          { muelle: muelle },
+          { createdAt: { $gte: fecha1, $lte: fecha2 } },
+        ],
+      })
+      .populate({
+        path: "usuario",
+        model: "usuario",
+        populate: {path:"agencia",model:"agencia"}
+        
+      })
+        .populate("embarcacion")
+       
+        res.status(200).json(reg);
+    } catch (e) {
+      res.status(500).send({
+        message: "Ocurrio un error",
+      });
+      next(e);
+    }
+  },
+
+  listarSUPorEmbarcacion: async (req, res, next) => {
+    try {
+      let fecha1 = req.query.fecha1;
+      let fecha2 = req.query.fecha2;
+      let embarcacion = req.query.embarcacion;
+      const reg = await models.SolicitudUnica.find({
+        $and: [
+          { embarcacion: embarcacion },
+          { createdAt: { $gte: fecha1, $lte: fecha2 } },
+        ],
+      })
+      .populate({
+        path: "usuario",
+        model: "usuario",
+        populate: {path:"agencia",model:"agencia"}
+        
+      })
+        .populate("embarcacion")
+       
+        res.status(200).json(reg);
+    } catch (e) {
+      res.status(500).send({
+        message: "Ocurrio un error",
+      });
+      next(e);
+    }
+  },
+
+  listarSUPorEstatus: async (req, res, next) => {
+    try {
+      let fecha1 = req.query.fecha1;
+      let fecha2 = req.query.fecha2;
+      let estado = req.query.estado;
+      const reg = await models.SolicitudUnica.find({
+        $and: [
+          { estado: estado },
+          { createdAt: { $gte: fecha1, $lte: fecha2 } },
+        ],
+      })
+      .populate({
+        path: "usuario",
+        model: "usuario",
+        populate: {path:"agencia",model:"agencia"}
+        
+      })
+        .populate("embarcacion")
+       
+        res.status(200).json(reg);
+    } catch (e) {
+      res.status(500).send({
+        message: "Ocurrio un error",
+      });
+      next(e);
+    }
+  },
+
+
+  listarSUPorFecha: async (req, res, next) => {
+    try {
+      let fecha1 = req.query.fecha1;
+      let fecha2 = req.query.fecha2;
+      const reg = await models.SolicitudUnica.find({
+      
+          createdAt: { $gte: fecha1, $lte: fecha2 } ,
+        
+      })
+      .populate({
+        path: "usuario",
+        model: "usuario",
+        populate: {path:"agencia",model:"agencia"}
+        
+      })
+        .populate("embarcacion")
+       
+        res.status(200).json(reg);
+    } catch (e) {
+      res.status(500).send({
+        message: "Ocurrio un error",
+      });
+      next(e);
+    }
+  },
   listarSUPorAgencia: async (req, res, next) => {
     try {
       let fecha1 = req.query.fecha1;
