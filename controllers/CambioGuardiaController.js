@@ -225,7 +225,7 @@ export default {
     try {
       const reg = await models.CambioGuardia.findByIdAndUpdate(
         { _id: req.body._id },
-        { pasajeros: req.body.pasajeros,estado:4 }
+        { pasajeros: req.body.pasajeros,estado:4, hora_embarque:req.body.hora_embarque }
       );
       res.status(200).json(reg);
     } catch (e) {

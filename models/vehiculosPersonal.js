@@ -3,7 +3,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const vehiculosPersonalSchema = new Schema({
     counter: {type:Number,unique:true},
-    usuario: {type:Schema.ObjectId,ref:'usuario',required:true},
+    usuario: [{type:Schema.ObjectId,ref:'usuario',required:true}],
 
     fecha: {type:Array, required:true},
     tipo: {type:String,required:true},

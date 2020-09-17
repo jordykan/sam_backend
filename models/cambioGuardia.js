@@ -15,7 +15,7 @@ const cambioGuardiaSchema = new Schema({
     detalles: {type:String, required:true},
     estado: {type:Number, default:0},
     motivo_cancelacion: {type:String},
-    
+    hora_embarque : {type: Date},
     adjunto: {type:String},
     fechaAprobacion:{type:Date},
     createdAt: {type:Date, default: Date.now()},
