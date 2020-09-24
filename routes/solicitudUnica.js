@@ -18,6 +18,8 @@ router.put('/aprobarApi',auth.verifyCliente,auth.verifyAdministrador,auth.verify
 router.put('/update',auth.verifyCliente,solicitudUnicaController.update);
 router.delete('/remove',auth.verifyCliente,solicitudUnicaController.remove);
 router.put('/activate',auth.verifyCliente,solicitudUnicaController.activate);
+router.put('/finalizarServicio',auth.verifyCliente,solicitudUnicaController.finalizarServicio);
+router.put('/finalizarServicioNoRealizado',auth.verifyCliente,solicitudUnicaController.finalizarServicioNoRealizado);
 router.put('/deactivate',auth.verifyCliente,solicitudUnicaController.deactivate);
 router.put('/deactivateApi',auth.verifyCliente,solicitudUnicaController.deactivateApi);
 

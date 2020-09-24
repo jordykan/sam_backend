@@ -9,6 +9,7 @@ import VehiculoPersonal from './vehiculosPersonal'
 import Vehiculos from './Vehiculos'
 import Pasajeros from './pasajeros'
 import Compania from './compania'
+import BitacoraEmbarcaciones from './bitacoraEmbarcaciones'
 
 export default {
     Embarcacion,
@@ -20,5 +21,6 @@ export default {
     VehiculoPersonal,
     Vehiculos,
     Pasajeros,
-    Compania
+    Compania,
+    BitacoraEmbarcaciones
 }

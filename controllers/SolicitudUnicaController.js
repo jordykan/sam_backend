@@ -136,6 +136,44 @@ export default {
       next(e);
     }
   },
+  finalizarServicio: async (req, res, next) => {
+    try {
+     
+      const reg = await models.SolicitudUnica.findByIdAndUpdate(
+        { _id: req.body._id },
+        {
+          estado: 4,
+      
+        }
+      )
+      .populate("usuario");
+      res.status(200).json(reg);
+    } catch (e) {
+      res.status(500).send({
+        messaje: "Ocurrio un error",
+      });
+      next(e);
+    }
+  },
+  finalizarServicioNoRealizado: async (req, res, next) => {
+    try {
+     
+      const reg = await models.SolicitudUnica.findByIdAndUpdate(
+        { _id: req.body._id },
+        {
+          estado: 5,
+      
+        }
+      )
+      .populate("usuario");
+      res.status(200).json(reg);
+    } catch (e) {
+      res.status(500).send({
+        messaje: "Ocurrio un error",
+      });
+      next(e);
+    }
+  },
   deactivate: async (req, res, next) => {
     try {
       const reg = await models.SolicitudUnica.findByIdAndUpdate(
