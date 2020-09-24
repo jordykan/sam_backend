@@ -12,6 +12,7 @@ import VehiculoPersonal from './vehiculosPersonal';
 import Reportes from './reportes'
 import Pasajeros from './pasajeros'
 import Compania from './companias'
+import BitacoraEmbarcacion from './BitacoraEmbarcacion'
 
 const router = routerx();
 
@@ -25,5 +26,6 @@ router.use('/vehiculoPersonal',VehiculoPersonal);
 router.use('/reportes',Reportes);
 router.use('/pasajeros',Pasajeros);
 router.use('/companias',Compania)
+router.use('/bitacoraEmbarcacion',BitacoraEmbarcacion)
 export default router;
     
