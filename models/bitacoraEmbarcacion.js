@@ -10,8 +10,8 @@ const bitacoraEmbarcacionSchema = new Schema({
     desembarquePx: {type:Number, required:true},
     folioServicio : {type:String,required:true},
     entrada: {type:Number,required:true},
-    salida: {type:Number,required:true}
-
+    salida: {type:Number,required:true},
+    mesCaptura:{type:Date,required:true}
 })
 
 const bitacoraEmbarcacion = mongoose.model('bitacoraEmbarcacion',bitacoraEmbarcacionSchema);

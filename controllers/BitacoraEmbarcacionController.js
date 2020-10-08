@@ -3,7 +3,7 @@ import models from "../models";
 export default {
   add: async (req, res, next) => {
     try {
-      const reg = await models.BitacoraEmbarcaciones.create(req.body);
+      const reg = await models.BitacoraEmbarcacion.create(req.body);
       res.status(200).json(reg);
     } catch (e) {
       res.status(500).send({
@@ -15,12 +15,16 @@ export default {
 
   list: async (req, res, next) => {
     try {
-      const reg = await models.BitacoraEmbarcaciones.find({'embarcacion': req.query.embarcacion})
+      const reg = await models.BitacoraEmbarcacion.find({ $and: [
+        { embarcacion: req.query.embarcacion },
+        { mesCaptura: req.query.fecha },
+      ],
+    })
         .populate("agencia")
         .populate("embarcacion")
         .sort({ createdAt: -1 });
       res.status(200).json(reg);
-    } catch (e) {
+    } catch (e) { 
       res.status(500).send({
         message: "Ocurrio un error",
       });
@@ -30,7 +34,7 @@ export default {
  
   update: async (req, res, next) => {
     try {
-      const reg = await models.BitacoraEmbarcaciones.findByIdAndUpdate(
+      const reg = await models.BitacoraEmbarcacion.findByIdAndUpdate(
         { _id: req.body._id },
         {
           folioServicio: req.body.folioServicio,
@@ -42,6 +46,7 @@ export default {
           desembarquePx: req.body.desembarquePx,
           entrada: req.body.entrada,
           salida: req.body.salida,
+          mesCaptura:req.body.mesCaptura
         }
       );
       res.status(200).json(reg);
