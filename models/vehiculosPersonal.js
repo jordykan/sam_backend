@@ -25,7 +25,7 @@ const vehiculosPersonalSchema = new Schema({
     vehiculos:[{
         marca:{
             type:String,
-            required:true
+            
         },
         compania_aseguradora:{
             type:String,
