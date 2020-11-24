@@ -33,6 +33,7 @@ export default {
             next(e);
         }
     },
+   
     list: async(req,res,next)=>{
         try{
             let valor = req.query.valor;
