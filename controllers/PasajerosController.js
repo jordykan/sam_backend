@@ -34,7 +34,7 @@ export default {
         try{
             let valor = req.query.valor
             let agencia = req.query.agencia
-            const reg = await models.Pasajeros.find({$or:[{'nombre_completo':new RegExp(valor,'i')},{'rfc':new RegExp(valor,'i')}],agencia:agencia})
+            const reg = await models.Pasajeros.find({$or:[{'nombre':new RegExp(valor,'i')},{'rfc':new RegExp(valor,'i')}],agencia:agencia})
             res.status(200).json(reg);
         }catch(e){
             res.status(500).send({

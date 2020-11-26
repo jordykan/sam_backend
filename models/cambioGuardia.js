@@ -24,11 +24,15 @@ const cambioGuardiaSchema = new Schema({
             type:String,
             required:true
         },
-        nombreCompleto:{
+        nombre:{
             type:String,
             required:true
         },
-        identificacion:{
+        apellidoPaterno:{
+            type:String,
+            required:true
+        },
+        apellidoMaterno:{
             type:String,
             required:true
         },
