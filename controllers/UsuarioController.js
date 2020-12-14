@@ -78,6 +78,22 @@ export default {
             });
             next(e);
         }
+    },  
+    updatePassword: async(req,res,next)=>{
+        try{
+            let pas = req.body.password;
+            const reg0 = await models.Usuario.findOne({_id:req.body._id});
+            if(pas!=reg0.password){
+                req.body.password = await bcrypt.hash(req.body.password,10); 
+            }
+            const reg = await models.Usuario.findByIdAndUpdate({_id:req.body._id},{password: req.body.password});
+            res.status(200).json(reg)
+        }catch(e){
+            res.status(500).send({
+                message:'Ocurrio un error'
+            });
+            next(e);
+        }
     },
     remove: async(req,res,next)=>{
         try{

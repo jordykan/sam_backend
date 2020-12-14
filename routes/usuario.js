@@ -9,6 +9,7 @@ router.get('/query', auth.verifyAdministrador, usuarioController.query);
 router.get('/list', auth.verifyAdministrador, usuarioController.list);
 router.get('/listActivos', auth.verifyAdministrador, usuarioController.listActivos);
 router.put('/update', auth.verifyAdministrador, usuarioController.update);
+router.put('/updatePassword',auth.verifyAdministrador,usuarioController.updatePassword)
 router.delete('/remove', auth.verifyAdministrador, usuarioController.remove);
 router.put('/activate', auth.verifyAdministrador, usuarioController.activate);
 router.put('/deactivate', auth.verifyAdministrador, usuarioController.deactivate);
