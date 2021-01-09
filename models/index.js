@@ -10,6 +10,7 @@ import Vehiculos from './Vehiculos'
 import Pasajeros from './pasajeros'
 import Compania from './compania'
 import BitacoraEmbarcacion from './bitacoraEmbarcacion'
+import CosteoPsp from './costeoPsp';
 
 export default {
     Embarcacion,
@@ -22,5 +23,6 @@ export default {
     Vehiculos,
     Pasajeros,
     Compania,
-    BitacoraEmbarcacion
+    BitacoraEmbarcacion,
+    CosteoPsp
 }
