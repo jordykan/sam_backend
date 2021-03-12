@@ -7,7 +7,7 @@ export default{
             });
         }
         const response = await tokenService.decode(req.headers.token);
-        if(response.rol == 'Administrador' || response.rol == 'Cliente' || response.rol == 'Proveedor' || response.rol == 'APITAB'){
+        if(response.rol == 'Administrador' || response.rol == 'Cliente' || response.rol == 'PSP' || response.rol == 'APITAB'){
             next();
         }else{
             return res.status(403).send({
@@ -23,7 +23,7 @@ export default{
             });
         }
         const response = await tokenService.decode(req.headers.token);
-        if(response.rol == 'Administrador' || response.rol=='Cliente' || response.rol=='APITAB'){
+        if(response.rol == 'Administrador' || response.rol=='Cliente' || response.rol=='APITAB' || response.rol=='PSP'){
             next();
         }else{  
             return res.status(403).send({
@@ -38,7 +38,7 @@ export default{
             });
         }
         const response = await tokenService.decode(req.headers.token);
-        if(response.rol == 'Cliente' || response.rol == 'Administrador'|| response.rol == "APITAB"){
+        if(response.rol == 'Cliente' || response.rol == 'Administrador'|| response.rol == "APITAB" || response.rol=='PSP'){
             next();
         }else{
             return res.status(403).send({
@@ -53,7 +53,7 @@ export default{
             });
         }
         const response = await tokenService.decode(req.headers.token);
-        if(response.rol == 'Proveedor'){
+        if(response.rol == 'Cliente' || response.rol == 'Administrador'|| response.rol == "APITAB" || response.rol=='PSP'){
             next();
         }else{
             return res.status(403).send({
@@ -68,7 +68,7 @@ export default{
             });
         }
         const response = await tokenService.decode(req.headers.token);
-        if(response.rol == 'Administrador' || response.rol=='APITAB' || response.rol == 'Cliente'){
+        if(response.rol == 'Cliente' || response.rol == 'Administrador'|| response.rol == "APITAB" || response.rol=='PSP'){
             next();
         }else{
             return res.status(403).send({

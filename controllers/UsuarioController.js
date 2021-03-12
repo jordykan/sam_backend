@@ -15,6 +15,18 @@ export default {
             next(e);
         }
     },
+    addPsp: async(req,res,next)=>{
+        try{
+            req.body.password = await bcrypt.hash(req.body.password,10);
+            const reg = await models.Usuario.create(req.body);
+            res.status(200).json(reg);
+        }catch(e){
+            res.status(500).send({
+                message:'Ocurrio un error'
+            });
+            next(e);
+        }
+    },
     query: async(req,res,next)=>{
         try{
             const reg = await models.Usuario.findOne({_id:req.query._id})
@@ -37,9 +49,25 @@ export default {
     list: async(req,res,next)=>{
         try{
             let valor = req.query.valor;
-            const reg = await models.Usuario.find({'nombre':new RegExp(valor,'i')},{createdAt:0})
+            const reg = await models.Usuario.find({  $or: [
+                { 'rol': 'Administrador' },
+                { 'rol': 'Cliente' },
+                { 'nickname': 'Apitab' }
+              ]})
             .sort({'createdAt':-1})
             .populate('agencia')
+            res.status(200).json(reg);
+        }catch(e){
+            res.status(500).send({
+                message:'Ocurrio un error'
+            });
+            next(e);
+        }
+    },
+    listPsp: async(req,res,next)=>{
+        try{
+            const reg = await models.Usuario.find({'rol':'PSP'})
+            .sort({'createdAt':-1})
             res.status(200).json(reg);
         }catch(e){
             res.status(500).send({
@@ -135,7 +163,7 @@ export default {
                 //Existe un usuario con el email
                 let match = await  bcrypt.compare(req.body.password,user.password);
                 if(match){
-                    let tokenReturn = await token.encode(user._id,user.rol,user.email,user.nombre,user.agencia);
+                    let tokenReturn = await token.encode(user._id,user.rol,user.email,user.nombre,user.agencia,user.telefono);
                     res.status(200).json({user,tokenReturn});
                 }else{
                     res.status(404).send({

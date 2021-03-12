@@ -19,8 +19,8 @@ async function checkToken(token){
 }
 
 export default{
-    encode: async(_id,rol,email,nombre,agencia)=>{
-        const token = jwt.sign({_id:_id,rol:rol,email:email,nombre:nombre,agencia:agencia},'clavetokenamls',{expiresIn: '1d'});
+    encode: async(_id,rol,email,nombre,agencia,telefono)=>{
+        const token = jwt.sign({_id:_id,rol:rol,email:email,nombre:nombre,agencia:agencia,telefono:telefono},'clavetokenamls',{expiresIn: '1d'});
         return token;
     },
     decode: async(token)=>{
