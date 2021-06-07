@@ -14,6 +14,7 @@ import Pasajeros from './pasajeros'
 import Compania from './companias'
 import BitacoraEmbarcacion from './bitacoraEmbarcacion'
 import CosteoPsp from './costeoPsp';
+import Estadia from './estadia'
 
 const router = routerx();
 
@@ -29,5 +30,6 @@ router.use('/pasajeros',Pasajeros);
 router.use('/companias',Compania)
 router.use('/bitacoraEmbarcacion',BitacoraEmbarcacion)
 router.use('/costeoPsp', CosteoPsp);
+router.use('/estadia',Estadia);
 export default router;
     
