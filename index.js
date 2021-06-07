@@ -7,7 +7,7 @@ import router from './routes/index';
 import history from 'connect-history-api-fallback'
 
 const app = express();
-const dburl = 'mongodb+srv://jcan:AjTfqGctpym1VPSc@cluster0-0yvtg.mongodb.net/saaemp?retryWrites=true&w=majority'
+const dburl = ''
 
 mongoose.Promise=global.Promise
 mongoose.connect(dburl, {useCreateIndex:true,useNewUrlParser: true,useUnifiedTopology: true})
